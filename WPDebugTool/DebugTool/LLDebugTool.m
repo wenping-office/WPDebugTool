@@ -57,6 +57,17 @@ static LLDebugTool *_instance = nil;
     return _instance;
 }
 
+- (void)startWorkingWith:(UIWindowScene *)windowScene{
+    LLWindowManager.shared.windowScene = windowScene;
+    [self startWorking];
+}
+
+- (void)startWorkingWith:(UIWindowScene *)windowScene configBlock:(void (^)(LLConfig * _Nonnull))configBlock{
+    LLWindowManager.shared.windowScene = windowScene;
+    
+    [self startWorkingWithConfigBlock:configBlock];
+}
+
 - (void)startWorking {
     if (!_isWorking) {
         _isWorking = YES;

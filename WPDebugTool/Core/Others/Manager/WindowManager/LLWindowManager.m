@@ -53,6 +53,20 @@ static LLWindowManager *_instance = nil;
 @implementation LLWindowManager
 
 #pragma mark - Public
+
+- (UIWindow *)mainWindow{
+    if (@available(iOS 13.0, *)) {
+        if (_windowScene != nil){
+            for (UIWindowScene* windowScene in [UIApplication sharedApplication].connectedScenes) {
+                if (windowScene.activationState == UISceneActivationStateForegroundActive) {
+                    return windowScene.windows.firstObject;
+                }
+            }
+        }
+    }
+    return [UIApplication sharedApplication].delegate.window;
+}
+
 + (instancetype)shared {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -261,6 +275,13 @@ static LLWindowManager *_instance = nil;
 - (LLEntryWindow *)entryWindow {
     if (!_entryWindow) {
         _entryWindow = (LLEntryWindow *)[[self class] createWindowWithClassName:NSStringFromClass([LLEntryWindow class])];
+        
+        if (@available(iOS 13.0, *)) {
+            if (_windowScene != nil){
+                _entryWindow.windowScene = _windowScene;
+            }
+        }
+        
     }
     return _entryWindow;
 }
@@ -282,6 +303,12 @@ static LLWindowManager *_instance = nil;
         window = [[cls alloc] initWithFrame:[UIScreen mainScreen].bounds];
     }
     NSAssert([window isKindOfClass:[LLBaseWindow class]], ([NSString stringWithFormat:@"%@ isn't a LLBaseWindow class",className]));
+    
+    if (@available(iOS 13.0, *)) {
+        if (LLWindowManager.shared.windowScene != nil){
+            window.windowScene = LLWindowManager.shared.windowScene;
+        }
+    }
     return window;
 }
 

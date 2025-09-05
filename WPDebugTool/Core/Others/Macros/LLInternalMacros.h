@@ -38,7 +38,7 @@
 #define LL_IS_SPECIAL_SCREEN \
 ({BOOL isPhoneX = NO;\
 if (@available(iOS 11.0, *)) {\
-isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bottom > 0.0;\
+isPhoneX = YES;\
 }\
 (isPhoneX);})
 // Layout length by horizontal direction in 414px.

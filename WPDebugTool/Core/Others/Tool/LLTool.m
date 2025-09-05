@@ -30,6 +30,7 @@
 #import "LLDebugTool.h"
 #import "LLLogDefine.h"
 #import "LLConfig.h"
+#import "LLWindowManager.h"
 
 static unsigned long long _absolutelyIdentity = 0;
 
@@ -84,7 +85,7 @@ static pthread_mutex_t mutex_t = PTHREAD_MUTEX_INITIALIZER;
 }
 
 + (UIWindow *)topWindow {
-    UIWindow *topWindow = [UIApplication sharedApplication].delegate.window;
+    UIWindow *topWindow = LLWindowManager.shared.mainWindow;
     for (UIWindow *win in [UIApplication sharedApplication].windows) {
         if (!win.isHidden && win.windowLevel > topWindow.windowLevel) {
             topWindow = win;

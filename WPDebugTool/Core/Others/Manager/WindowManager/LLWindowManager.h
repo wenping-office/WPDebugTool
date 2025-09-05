@@ -39,6 +39,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, strong, readonly) LLEntryWindow *entryWindow;
 
+@property (nonatomic, strong, nonnull) UIWindowScene *windowScene API_AVAILABLE(ios(13.0));
+
+
+- (UIWindow *)mainWindow;
+
 /**
  Singleton
 

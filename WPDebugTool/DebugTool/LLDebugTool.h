@@ -44,6 +44,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)startWorking;
 
+- (void)startWorkingWith:(UIWindowScene *)windowScene API_AVAILABLE(ios(13.0));
+
 /**
  Start working with config block.
 
@@ -51,6 +53,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)startWorkingWithConfigBlock:(void (^__nullable)(LLConfig *config))configBlock;
 
+- (void)startWorkingWith:(UIWindowScene *)windowScene configBlock:(void (^__nullable)(LLConfig *config))configBlock API_AVAILABLE(ios(13.0));
 /**
  Stop working.
  */
