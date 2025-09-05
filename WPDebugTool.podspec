@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
   s.license             = "MIT"
   s.author              = { "HDB-Li" => "wenping.office@foxmail.com" }
   s.social_media_url    = "https://github.com/wenping-office"
-  s.platform            = :ios, "8.0"
+  s.platform            = :ios, "12.0"
   s.source              = { :git => "https://github.com/wenping-office/WPDebugTool.git", :tag => s.version }
   s.requires_arc        = true
 
