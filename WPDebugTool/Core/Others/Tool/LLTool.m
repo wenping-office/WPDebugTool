@@ -138,7 +138,7 @@ static bool _statusBarClickable = YES;
 #ifdef __IPHONE_13_0
     if (@available(iOS 13.0, *)) {
         // We can still get statusBar using the following code, but this is not recommended.
-        UIStatusBarManager *statusBarManager = [UIApplication sharedApplication].delegate.window.windowScene.statusBarManager;
+        UIStatusBarManager *statusBarManager = LLWindowManager.shared.mainWindow.windowScene.statusBarManager;
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
         if ([statusBarManager respondsToSelector:@selector(createLocalStatusBar)]) {

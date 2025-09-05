@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                = "WPDebugTool"
-  s.version             = "1.3.8.1"
+  s.version             = "1.3.8.2"
   s.summary             = "修复LLDebugTool通过SceneDelegate创建app初始化不成功问题、移除UIWebView相关代码"
   s.homepage            = "https://github.com/wenping-office/WPDebugTool"
   s.license             = "MIT"
